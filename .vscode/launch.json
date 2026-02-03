@@ -38,7 +38,7 @@
                 "Launch Chrome"
             ],
             "stopAll": true,
-            "preLaunchTask": ""
+            // "preLaunchTask": "where ffmpeg"
         }
     ]
 }

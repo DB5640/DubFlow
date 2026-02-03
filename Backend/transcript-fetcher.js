@@ -324,7 +324,7 @@ const tryManualTranscriptExtraction = async (videoId) => {
 
     // Try to get available transcript languages first
     const availableTranscripts =
-      await YoutubeTranscript.listTranscripts(videoId);
+      await YoutubeTranscript.fetchTranscript(videoId);
     console.log('Available transcripts:', availableTranscripts);
 
     if (availableTranscripts && availableTranscripts.length > 0) {
@@ -357,7 +357,8 @@ const fetchTranscript = async (videoId) => {
       throw new Error('Invalid YouTube video ID format');
     }
 
-    return await fetchTranscriptWithRetry(videoId);
+    // return await fetchTranscriptWithRetry(videoId);
+    return await fetchTranscriptWithYtDlp(videoId); //TODO: switch back to fetchTranscriptWithRetry, but for development testing
   } catch (error) {
     console.error('❌ Transcript fetching failed:', error.message);
 
